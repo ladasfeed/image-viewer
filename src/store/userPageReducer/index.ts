@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {initialStateType} from "./types";
-import {AlbumType, PhotoType, UserType} from "../types";
+import {AlbumType, PhotosObjectType, PhotoType, UserType} from "../types";
 import {RootState} from "../index";
 
 const initialState: initialStateType = {
@@ -27,7 +27,10 @@ const initialState: initialStateType = {
             bs: null
         }
     },
-    currentPhotos: [],
+    photosObject: {
+        photos: [],
+        isLoading: false
+    },
     albums: [],
     usersList: []
 }
@@ -42,8 +45,8 @@ export const userPageReducer = createSlice({
         setCurrentUser: (state: initialStateType, {payload}: PayloadAction<UserType>) => {
             state.chosenUser = payload
         },
-        setUserPhotos: (state: initialStateType, {payload}: PayloadAction<Array<PhotoType>>) => {
-            state.currentPhotos = payload
+        setUserPhotos: (state: initialStateType, {payload}: PayloadAction<PhotosObjectType>) => {
+            state.photosObject = payload
         },
         setUsersAlbums: (state: initialStateType, {payload}: PayloadAction<Array<AlbumType>>) => {
             state.albums = payload
@@ -54,7 +57,7 @@ export const userPageReducer = createSlice({
 export const userPageSelectors = {
     getUsersList: (state: RootState) => state.userPageReducer.usersList,
     getCurrentUser: (state: RootState) => state.userPageReducer.chosenUser,
-    getUserPhotos: (state: RootState) => state.userPageReducer.currentPhotos,
+    getUserPhotos: (state: RootState) => state.userPageReducer.photosObject,
     getUsersAlbums: (state: RootState) => state.userPageReducer.albums,
 }
 

@@ -1,0 +1,18 @@
+.Users {
+    height: calc(100vh - 144px);
+    overflow: hidden;
+}
+    .Users__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px;
+        background: brown;
+    }
+        .Users__list .UserThumb {
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+    .UserPage__albums {
+
+    }

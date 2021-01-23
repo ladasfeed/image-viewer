@@ -6,6 +6,11 @@ export type PhotoType =  {
     thumbnailUrl: string | null
 }
 
+export type PhotosObjectType =  {
+    photos: Array<PhotoType>
+    isLoading: boolean
+}
+
 export type AlbumType = {
     userId: number | null,
     id: number | null,

@@ -1,8 +1,8 @@
-import {AlbumType, PhotoType, UserType} from "../types";
+import {AlbumType, PhotosObjectType, PhotoType, UserType} from "../types";
 
 export type initialStateType = {
     chosenUser: UserType,
-    currentPhotos: Array<PhotoType>,
+    photosObject: PhotosObjectType,
     albums: Array<AlbumType>,
     usersList: Array<UserType>
 }

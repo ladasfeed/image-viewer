@@ -6,6 +6,7 @@ import {Header} from "./components/Header";
 import {Users} from "./components/pages/Users";
 import {Albums} from "./components/pages/Albums";
 import {Photos} from "./components/pages/Photos";
+import './components/ui/style/style.css'
 import {userPageApi} from "./api";
 
 function App() {

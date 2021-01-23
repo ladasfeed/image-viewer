@@ -1,0 +1,11 @@
+.two-cols-container {
+    display: grid;
+    grid-template-columns: 470px 1fr;
+}
+    .two-cols-container > div:first-child {
+        grid-column: 1/2;
+        overflow-y: scroll;
+    }
+    .two-cols-container > div:last-child {
+        grid-column: 2/-1;
+    }

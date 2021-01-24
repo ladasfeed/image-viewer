@@ -6,7 +6,6 @@
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 20px;
-        background: brown;
     }
         .Users__list .UserThumb {
             margin-bottom: 30px;
@@ -14,4 +13,9 @@
         }
     .UserPage__albums {
 
+    }
+    .UserPage--empty {
+        display: grid;
+        place-items: center;
+        font-size: 45px;
     }

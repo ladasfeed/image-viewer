@@ -11,6 +11,10 @@ export const photosApi = {
         const response = await request.get(`albums/${props.albumId}/photos`)
         return response
     },
+    getAllPhotos: async () => {
+        const response = await request.get(`photos`)
+        return response
+    },
 }
 
 export const albumsApi = {

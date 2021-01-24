@@ -1,18 +1,26 @@
 .Album {
     flex-shrink: 0;
     margin-right: 20px;
-    width: 300px;
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px;
     cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid black;
     text-align: center;
+    transition: .5s;
 }
 .Album img {
     transition: .3s;
 }
 .Album:hover img {
     transform: scale(1.1);
+}
+
+/* modifications */
+.Album--active {
+    box-shadow: 0 0 10px white;
 }

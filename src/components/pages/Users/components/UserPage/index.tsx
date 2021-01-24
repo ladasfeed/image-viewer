@@ -36,7 +36,7 @@ export const UserPage: FC = () => {
 
     /* view */
     if (currentUser.id == null) {
-        return <div>Choose user</div>
+        return <div className='UserPage--empty'>Choose user</div>
     }
     return (
         <div className='UserPage'>

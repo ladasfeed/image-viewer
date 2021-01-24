@@ -1,8 +1,11 @@
 .UserPage {
-    background: aquamarine;
+    background: #957ce2;
     padding: 40px;
     overflow-y: hidden;
 }
     .UserPage .ImageViewer {
         height: 400px;
+    }
+    .UserPage .UserAlbums {
+        background: var(--color-purpule);
     }

@@ -4,13 +4,16 @@ import {usePortal} from "../../../../../hooks/usePortal";
 import ReactDOM from "react-dom";
 import {useHistory} from 'react-router-dom'
 import {PhotosObjectType} from "../../../../../store/types";
+import {Image} from "../../../Image";
+import {useDispatch} from "react-redux";
+import {albumsReducerActions} from "../../../../../store/albumsReducer";
 
 type PropsType = {
     photosObject: PhotosObjectType,
-    chosenImage: number,
-    chooseImageHandler: (value:number) => void
+    chosenImage: number | undefined,
+    chooseImageHandler: (value: number | undefined) => void
 }
-export const PreviewController:FC<PropsType> = (props) => {
+export const PreviewController: FC<PropsType> = (props) => {
     /* state */
     const {
         photosObject,
@@ -18,31 +21,39 @@ export const PreviewController:FC<PropsType> = (props) => {
         chooseImageHandler
     } = props
     const target = usePortal('App')
-    const history = useHistory()
-
-    console.log(photosObject.photos[chosenImage])
 
     /* methods */
     const closePreview = () => {
-        chooseImageHandler(0)
+        chooseImageHandler(undefined)
     }
-    const goToAlbum = () => {
-        history.push('/albums')
+    const nextImage = () => {
+        const current = Number(chosenImage)
+        chooseImageHandler(
+            (current+1)%photosObject.photos.length
+        )
+    }
+    const prevImage = () => {
+        const current = Number(chosenImage)
+        chooseImageHandler(current ? current-1 : 0)
     }
 
-    if (!chosenImage) return <></>
+    if (chosenImage === undefined) return <></>
     return ReactDOM.createPortal(
-            <div className='PreviewController'>
-                <div
-                    className='PreviewController__close'
-                    onClick={closePreview}
-                >
-                    Close
-                </div>
-                <div className='PreviewController__image-block'>
-                    <img src={photosObject.photos[chosenImage].url as string}/>
-                    <div onClick={goToAlbum}>Перейти к альбому...</div>
-                </div>
-            </div>,
+        <div className='PreviewController'>
+            <button
+                className='PreviewController__close'
+                onClick={closePreview}
+            >
+                Close
+            </button>
+            <div className='PreviewController__image-block'>
+                <span onClick={prevImage}/>
+                <Image
+                    src={photosObject.photos[chosenImage].url as string}
+                    title={photosObject.photos[chosenImage].title as string}
+                />
+                <span onClick={nextImage}/>
+            </div>
+        </div>,
         target)
 }

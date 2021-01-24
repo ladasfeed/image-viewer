@@ -17,9 +17,9 @@ export const UserAlbums: FC = () => {
     const dispatch = useDispatch()
 
     /* methods */
-    const getUserPhotos = (albumId: number) => {
+    const getUserPhotos = (album: AlbumType) => {
         dispatch(userThunk.getPhotosByAlbum({
-            albumId
+            albumId: Number(album.id)
         }))
     }
 

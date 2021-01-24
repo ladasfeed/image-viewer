@@ -1,0 +1,40 @@
+.Image {
+    cursor: pointer;
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+}
+.Image__loading {
+    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+}
+
+.Image__title {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+.Image__loading::before {
+    position: absolute;
+    content: ' ';
+    width: 10px;
+    height: 10px;
+    background: var(--color-purpule-pinky);
+    transform-origin: 0 -20px;
+    animation: loading 1s ease-in-out forwards infinite;
+}
+@keyframes loading {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+.Image--loading .Image__loading {
+        display: block;
+    }

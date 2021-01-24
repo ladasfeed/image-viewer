@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {initialStateType} from "./types";
-import {AlbumType, PhotosObjectType, PhotoType, UserType} from "../types";
+import {AlbumType, PhotosObjectType} from "../types";
 import {RootState} from "../index";
 
 const initialState: initialStateType = {
@@ -9,6 +9,7 @@ const initialState: initialStateType = {
         isLoading: false
     },
     albums: [],
+    currentAlbum: {} as AlbumType
 }
 
 export const albumsReducer = createSlice({
@@ -21,12 +22,16 @@ export const albumsReducer = createSlice({
         setAlbums: (state: initialStateType, {payload}: PayloadAction<Array<AlbumType>>) => {
             state.albums = payload
         },
+        setCurrentAlbum: (state: initialStateType, {payload}: PayloadAction<AlbumType>) => {
+            state.currentAlbum = payload
+        },
     }
 })
 
 export const albumsReducerSelectors = {
     getAlbums: (state: RootState) => state.albumsReducer.albums,
     getPhotos: (state: RootState) => state.albumsReducer.photosObject,
+    getCurrentAlbum: (state: RootState) => state.albumsReducer.currentAlbum,
 }
 
 export const albumsReducerActions = albumsReducer.actions

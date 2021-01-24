@@ -5,18 +5,19 @@ import './style.css'
 import {Paginator} from "./components/Paginator";
 import {PreviewController} from "./components/PreviewController";
 
-const IMAGES_PER_PAGE = 50;
+const IMAGES_PER_PAGE = 30;
 
 type PropsType = {
     photosObject: PhotosObjectType,
 }
 export const ImageViewer: FC<PropsType> = (props) => {
+    /* state */
     const {
         photosObject
     } = props
     const [currentPage, setCurrentPage] = useState(0)
-    const [chosenImage, setChosenImage] = useState(0)
     const [pagination, setPagination] = useState([0, 1, 2])
+    const [chosenImage, setChosenImage] = useState<number | undefined>(undefined)
     const ref = useRef<HTMLDivElement>(null)
 
     /* methods */
@@ -30,7 +31,7 @@ export const ImageViewer: FC<PropsType> = (props) => {
                     key={i}
                     id={i}
                     image={photosObject.photos[i]}
-                    setCurrentImage={setChosenImage}
+                        setCurrentImage={setChosenImage}
                 />
             )
         }

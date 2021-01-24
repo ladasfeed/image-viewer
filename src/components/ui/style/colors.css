@@ -1,0 +1,6 @@
+html {
+    --color-purpule-pinky: #957ce2;
+    --color-purpule-dark: #789AF0;
+    --color-purpule: #7D80FA;
+    background: var(--color-purpule-dark);
+}

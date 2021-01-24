@@ -5,25 +5,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {userPageThunk} from "../../../store/userPageReducer/thunk";
 import {UserThumb} from "../../ui/UserThumb";
 import {UserPage} from "./components/UserPage";
+import {UserList} from "./components/UsersList";
 
 export const Users:FC = () => {
-    /* state */
-    const users = useSelector(userPageSelectors.getUsersList)
-    const dispatch = useDispatch()
-    const userThunk = userPageThunk()
 
-    /* initial effect */
-    useEffect(()=>{
-        dispatch(userThunk.getUsers())
-    }, [])
 
     return (
         <section className='Users two-cols-container'>
-            <div className='Users__list'>
-                {users.map((user, index) =>
-                    <UserThumb key={index} user={user}/>
-                )}
-            </div>
+            <UserList/>
             <UserPage/>
         </section>
     )

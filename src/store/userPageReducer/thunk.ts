@@ -1,4 +1,4 @@
-import {userPageApi} from "../../api";
+import {photosApi, userPageApi} from "../../api";
 import {Dispatch} from "react";
 import {RootState} from "../index";
 import {userPageReducer, userPageSelectors} from "./index";
@@ -27,7 +27,7 @@ export const userPageThunk = () => {
             const response = await userPageApi.getAlbumsByUser({
                 userId: props.userId
             })
-            console.log(response)
+
             switch (response.status) {
                 case 200:
                     dispatch(userPageReducer.actions.setUsersAlbums(response.data))
@@ -45,10 +45,34 @@ export const userPageThunk = () => {
                 photos: [],
                 isLoading: true
             }))
-            const response = await userPageApi.getPhotosByAlbum({
+            const response = await photosApi.getPhotosByAlbum({
                 albumId: props.albumId
             })
-            console.log(response.data)
+
+            switch (response.status) {
+                case 200:
+                    dispatch(userPageReducer.actions.setUserPhotos({
+                        photos: response.data,
+                        isLoading: true
+                    }))
+                    break
+                default:
+                    break
+            }
+        }
+    }
+
+    function getPhotosByUser(props: IGetSomethingByUser) {
+        return async function(dispatch: Dispatch<any>, getState:()=>RootState) {
+            dispatch(userPageReducer.actions.setUserPhotos({
+                photos: [],
+                isLoading: true
+            }))
+            const response = await userPageApi.getPhotosByUser({
+                userId: props.userId
+            })
+
+
             switch (response.status) {
                 case 200:
                     dispatch(userPageReducer.actions.setUserPhotos({
@@ -65,6 +89,7 @@ export const userPageThunk = () => {
     return {
         getUsers,
         getUserAlbums,
-        getPhotosByAlbum
+        getPhotosByAlbum,
+        getPhotosByUser
     }
 }

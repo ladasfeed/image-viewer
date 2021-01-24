@@ -1,6 +1,8 @@
 .two-cols-container {
     display: grid;
     grid-template-columns: 470px 1fr;
+    height: calc(100vh - 144px);
+    overflow: hidden;
 }
     .two-cols-container > div:first-child {
         grid-column: 1/2;

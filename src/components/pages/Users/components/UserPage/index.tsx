@@ -5,27 +5,38 @@ import {userPageActions, userPageSelectors} from "../../../../../store/userPageR
 import {ImageViewer} from "../../../../ui/ImageViewer";
 import {UserAlbums} from "./components/UserAlbums";
 import {UserInfo} from "./components/UserInfo";
+import {userPageThunk} from "../../../../../store/userPageReducer/thunk";
 
 
 export const UserPage: FC = () => {
     /* state */
     const currentUser = useSelector(userPageSelectors.getCurrentUser)
     const photosObject = useSelector(userPageSelectors.getUserPhotos)
+    const thunk = userPageThunk()
     const dispatch = useDispatch()
 
     /* clean */
-    useEffect(() => {
+    const cleanPhotos = () => {
         dispatch(userPageActions.setUserPhotos({
             photos: [],
             isLoading: false
         }))
+    }
+    useEffect(() => {
+        cleanPhotos()
+        if (currentUser.id) {
+            dispatch(thunk.getPhotosByUser({
+                userId: Number(currentUser.id)
+            }))
+        }
     }, [currentUser])
+    useEffect(()=>{
+        return cleanPhotos
+    }, [])
 
     /* view */
     if (currentUser.id == null) {
-        return (
-            <div>Choose user</div>
-        )
+        return <div>Choose user</div>
     }
     return (
         <div className='UserPage'>

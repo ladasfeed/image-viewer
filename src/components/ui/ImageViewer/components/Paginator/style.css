@@ -1,0 +1,24 @@
+.ImageViewer__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+    .ImageViewer__pagination-item {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    .ImageViewer__pagination-item:not(:last-child) {
+        margin-right: 30px;
+    }
+    .ImageViewer__pagination-item--active {
+        box-shadow: 0 0 5px rgba(0,0,0,0.8);
+        transform: scale(1.2);
+    }

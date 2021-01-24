@@ -1,0 +1,9 @@
+.ImageThumb {
+    cursor: pointer;
+}
+    .ImageThumb .ImageThumb__text {
+        display: none;
+    }
+    .ImageThumb--loading .ImageThumb__text {
+        display: block;
+    }

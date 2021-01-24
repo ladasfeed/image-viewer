@@ -1,6 +1,5 @@
 .Users {
-    height: calc(100vh - 144px);
-    overflow: hidden;
+
 }
     .Users__list {
         display: flex;

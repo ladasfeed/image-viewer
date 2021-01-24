@@ -1,0 +1,8 @@
+.UserAlbums {
+    padding: 20px;
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 20px;
+}

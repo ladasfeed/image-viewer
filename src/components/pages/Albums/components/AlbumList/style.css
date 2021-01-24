@@ -1,0 +1,12 @@
+.AlbumList {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.AlbumList .Album {
+    width: 220px;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+}

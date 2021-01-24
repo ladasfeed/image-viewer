@@ -4,7 +4,9 @@ import {useThunkConnector} from "../../../../../../../hooks/useThunkConnector";
 import {useDispatch, useSelector} from "react-redux";
 import {userPageSelectors} from "../../../../../../../store/userPageReducer";
 import {userPageThunk} from "../../../../../../../store/userPageReducer/thunk";
-
+import {AlbumType} from "../../../../../../../store/types";
+import albumIcon from './images/album.png'
+import {Album} from "../../../../../../ui/Album";
 
 export const UserAlbums: FC = () => {
     /* state */
@@ -34,11 +36,10 @@ export const UserAlbums: FC = () => {
             {albumsThunkConnector.loading.get
                 ? <div>Loading...</div>
                 : userAlbums.map(item => (
-                    <div onClick={()=>getUserPhotos(Number(item.id))}>
-                        {item.title}
-                    </div>
+                    <Album album={item} onClick={getUserPhotos}/>
                 ))
             }
         </div>
     )
 }
+

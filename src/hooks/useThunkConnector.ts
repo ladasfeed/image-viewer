@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 export type thunkConnectorType = {
     loading: {
@@ -10,7 +10,7 @@ export type thunkConnectorType = {
         get: string
     }
 }
-export const useThunkConnector = ():thunkConnectorType => {
+export const useThunkConnector = (): thunkConnectorType => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 

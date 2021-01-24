@@ -4,6 +4,7 @@ import {ImageThumb} from './components/ImageThumb';
 import './style.css'
 import {Paginator} from "./components/Paginator";
 import {PreviewController} from "./components/PreviewController";
+import {usePaginator} from "../../../hooks/usePaginator";
 
 const IMAGES_PER_PAGE = 30;
 
@@ -15,36 +16,28 @@ export const ImageViewer: FC<PropsType> = (props) => {
     const {
         photosObject
     } = props
-    const [currentPage, setCurrentPage] = useState(0)
-    const [pagination, setPagination] = useState([0, 1, 2])
+    const paginator = usePaginator()
     const [chosenImage, setChosenImage] = useState<number | undefined>(undefined)
     const ref = useRef<HTMLDivElement>(null)
 
     /* methods */
-    const generatePage = () => {
-        const start = currentPage * IMAGES_PER_PAGE;
+    const getPageImages = () => {
+        const start = paginator.currentPage * IMAGES_PER_PAGE;
         const end = start + IMAGES_PER_PAGE;
         const arrayOfImages = []
         for (let i = start; i < end && i < photosObject.photos.length; i++) {
-            arrayOfImages.push(
-                <ImageThumb
-                    key={i}
-                    id={i}
-                    image={photosObject.photos[i]}
-                        setCurrentImage={setChosenImage}
-                />
-            )
+            arrayOfImages.push(photosObject.photos[i])
         }
         return arrayOfImages
     }
 
     /* effects */
     useEffect(() => {
-        setCurrentPage(0)
+        paginator.refresh()
     }, [photosObject])
     useEffect(() => {
         ref.current!.scrollTo(0, 0)
-    }, [currentPage])
+    }, [paginator.currentPage])
 
 
     /* view */
@@ -52,29 +45,26 @@ export const ImageViewer: FC<PropsType> = (props) => {
         <div ref={ref} className='ImageViewer'>
             <div className='ImageViewer__title'>Photos</div>
             {
-                photosObject.photos.length
-                ? <>
-                    <Paginator
-                        pagination={pagination}
-                        setPagination={setPagination}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
-                    />
+                !!photosObject.photos.length
+                && <>
+                    <Paginator {...paginator}/>
                     <div className='ImageViewer__list'>
-                        {generatePage()}
+                        {getPageImages().map((item, index) => (
+                            <ImageThumb
+                                key={index}
+                                id={index}
+                                image={item}
+                                setCurrentImage={setChosenImage}
+                            />
+                        ))}
                     </div>
-                    <Paginator
-                        pagination={pagination}
-                        setPagination={setPagination}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
-                    />
+                    {!!getPageImages().length && <Paginator {...paginator}/>}
                     <PreviewController
                         chosenImage={chosenImage}
                         photosObject={photosObject}
                         chooseImageHandler={setChosenImage}
                     />
-                </> : <></>
+                </>
             }
         </div>
     )

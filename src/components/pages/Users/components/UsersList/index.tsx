@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react'
-import {UserThumb} from "../../../../ui/UserThumb";
+import {UserThumb} from "./components/UserThumb";
 import {useDispatch, useSelector} from "react-redux";
 import {userPageSelectors} from "../../../../../store/userPageReducer";
 import {userPageThunk} from "../../../../../store/userPageReducer/thunk";

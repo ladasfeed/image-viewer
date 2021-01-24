@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom'
 import './style.css'
 import {HeaderImages} from "./images";
 import {routes} from "../../routes";
-import {AnimatedLink} from "../../helpers/AnimatedLink";
+
 const {
     photosIcon,
     albumsIcon,
     usersIcon
 } = HeaderImages
 
-export const Header:FC = () => {
+export const Header: FC = () => {
 
     return (
         <header className='Header'>

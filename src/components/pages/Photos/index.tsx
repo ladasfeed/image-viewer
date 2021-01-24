@@ -4,14 +4,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {photosPageSelectors} from "../../../store/photosPageReducer";
 import {ImageViewer} from "../../ui/ImageViewer";
 import {photosPageThunk} from "../../../store/photosPageReducer/thunk";
-import {useThunkConnector} from "../../../hooks/useThunkConnector";
 
-export const Photos:FC = () => {
+export const Photos: FC = () => {
     const photosObject = useSelector(photosPageSelectors.getPhotos)
     const thunk = photosPageThunk()
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(thunk.getPhotos())
     }, [])
 

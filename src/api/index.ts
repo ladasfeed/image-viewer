@@ -15,6 +15,10 @@ export const photosApi = {
         const response = await request.get(`photos`)
         return response
     },
+    getPhotosByUser: async (props: IGetSomethingByUser) => {
+        const response = await request.get(`users/${props.userId}/photos`)
+        return response
+    },
 }
 
 export const albumsApi = {
@@ -22,19 +26,15 @@ export const albumsApi = {
         const response = await request.get(`albums`)
         return response
     },
+    getAlbumsByUser: async (props: IGetSomethingByUser) => {
+        const response = await request.get(`users/${props.userId}/albums`)
+        return response
+    },
 }
 
 export const userPageApi = {
     getUsers: async () => {
         const response = await request.get('users')
-        return response
-    },
-    getAlbumsByUser: async (props: IGetSomethingByUser) => {
-        const response = await request.get(`users/${props.userId}/albums`)
-        return response
-    },
-    getPhotosByUser: async (props: IGetSomethingByUser) => {
-        const response = await request.get(`users/${props.userId}/photos`)
         return response
     },
 }

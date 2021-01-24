@@ -2,9 +2,8 @@ import React, {FC} from 'react'
 import userIcon from './images/userIcon.svg'
 import './style.css'
 import {useDispatch} from "react-redux";
-import {userPageThunk} from "../../../store/userPageReducer/thunk";
-import {userPageActions} from "../../../store/userPageReducer";
-import {UserType} from "../../../store/types";
+import {userPageActions} from "../../../../../../../store/userPageReducer";
+import {UserType} from "../../../../../../../store/types";
 
 type PropsType = {
     user: UserType

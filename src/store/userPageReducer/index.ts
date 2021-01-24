@@ -4,29 +4,7 @@ import {AlbumType, PhotosObjectType, PhotoType, UserType} from "../types";
 import {RootState} from "../index";
 
 const initialState: initialStateType = {
-    chosenUser: {
-        id: null,
-        name: null,
-        username: null,
-        email: null,
-        address: {
-            street: null,
-            suite: null,
-            city: null,
-            zipcode: null,
-            geo: {
-                lat: null,
-                lng: null
-            }
-        },
-        phone: null,
-        website: null,
-        company: {
-            name: null,
-            catchPhrase: null,
-            bs: null
-        }
-    },
+    chosenUser: {} as UserType,
     photosObject: {
         photos: [],
         isLoading: false

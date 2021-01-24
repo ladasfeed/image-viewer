@@ -28,9 +28,7 @@ export const PreviewController: FC<PropsType> = (props) => {
     }
     const nextImage = () => {
         const current = Number(chosenImage)
-        chooseImageHandler(
-            (current+1)%photosObject.photos.length
-        )
+        chooseImageHandler((current+1)%photosObject.photos.length)
     }
     const prevImage = () => {
         const current = Number(chosenImage)

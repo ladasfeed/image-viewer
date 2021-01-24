@@ -29,7 +29,7 @@ export const Album:FC<UserAlbumType> = (props) => {
                 'Album--active': isActive
             })}
         >
-            <img src={albumIcon}/>
+            <img src={albumIcon} alt='Album icon'/>
             <div>{album.title}</div>
         </div>
     )

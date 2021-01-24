@@ -1,8 +1,8 @@
 import {albumsApi, photosApi} from "../../api";
 import {Dispatch} from "react";
 import {RootState} from "../index";
-import {albumsReducer, albumsReducerActions} from "./index";
-import {IGetPhotosByAlbum, IGetSomethingByUser} from "../../api/types";
+import {albumsReducerActions} from "./index";
+import {IGetPhotosByAlbum} from "../../api/types";
 import {thunkConnectorType} from "../../hooks/useThunkConnector";
 
 export const albumsThunk = () => {
@@ -24,7 +24,7 @@ export const albumsThunk = () => {
     }
 
     function getPhotosByAlbum(props: IGetPhotosByAlbum) {
-        return async function (dispatch: Dispatch<any>, getState: () => RootState) {
+        return async function (dispatch: Dispatch<any>) {
             dispatch(albumsReducerActions.setPhotos({
                 photos: [],
                 isLoading: true

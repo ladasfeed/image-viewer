@@ -1,14 +1,11 @@
 import {photosApi} from "../../api";
 import {Dispatch} from "react";
-import {RootState} from "../index";
 import {photosPageAction} from "./index";
-import {IGetPhotosByAlbum} from "../../api/types";
 
 export const photosPageThunk = () => {
 
-
     function getPhotos() {
-        return async function (dispatch: Dispatch<any>, getState: () => RootState) {
+        return async function (dispatch: Dispatch<any>) {
             dispatch(photosPageAction.setPhotos({
                 photos: [],
                 isLoading: true
@@ -19,7 +16,7 @@ export const photosPageThunk = () => {
                 case 200:
                     dispatch(photosPageAction.setPhotos({
                         photos: response.data,
-                        isLoading: true
+                        isLoading: false
                     }))
                     break
                 default:

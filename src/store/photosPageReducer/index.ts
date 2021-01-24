@@ -11,7 +11,7 @@ const initialState: initialStateType = {
 }
 
 export const photosPageReducer = createSlice({
-    name: 'albumsReducer',
+    name: 'photosPageReducer',
     initialState: initialState,
     reducers: {
         setPhotos: (state: initialStateType, {payload}: PayloadAction<PhotosObjectType>) => {

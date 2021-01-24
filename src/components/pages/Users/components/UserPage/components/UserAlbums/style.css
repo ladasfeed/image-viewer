@@ -1,3 +1,9 @@
+.UserAlbums__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .UserAlbums {
     padding: 20px;
     display: flex;

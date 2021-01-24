@@ -32,14 +32,17 @@ export const UserAlbums: FC = () => {
     }, [currentUser])
 
     return (
-        <div className='UserAlbums'>
-            {albumsThunkConnector.loading.get
-                ? <div>Loading...</div>
-                : userAlbums.map(item => (
-                    <Album album={item} onClick={getUserPhotos}/>
-                ))
-            }
-        </div>
+        <>
+            <div className='UserAlbums__title'>Albums</div>
+            <div className='UserAlbums'>
+                {albumsThunkConnector.loading.get
+                    ? <div>Loading...</div>
+                    : userAlbums.map(item => (
+                        <Album album={item} onClick={getUserPhotos}/>
+                    ))
+                }
+            </div>
+        </>
     )
 }
 

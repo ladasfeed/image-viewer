@@ -8,6 +8,7 @@
 .Image__loading {
     display: none;
     position: absolute;
+    top: 50%;
     width: 1px;
     height: 1px;
 }
@@ -23,8 +24,9 @@
     content: ' ';
     width: 10px;
     height: 10px;
+    top: 25px;
     background: var(--color-purpule-pinky);
-    transform-origin: 0 -20px;
+    transform-origin: 0 -20px 0;
     animation: loading 1s ease-in-out forwards infinite;
 }
 @keyframes loading {
